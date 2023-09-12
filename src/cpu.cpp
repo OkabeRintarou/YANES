@@ -51,12 +51,3 @@ void LDA::execute(Status &status) {
 }
 
 void BRK::execute(Status &status) { status.set_break_command(true); }
-
-int main() {
-    Processor cpu;
-    u8 insts[] = {0xa9, 0x05, 0x00};
-    cpu.run(insts, 3);
-    assert(!cpu.status().is_zero());
-    assert(!cpu.status().is_negative());
-    return 0;
-}

@@ -15,3 +15,11 @@ TEST(BasicInst, test_0xa9_lda_zero_flag) {
     cpu.run(insts, 3);
     EXPECT_TRUE(cpu.status().is_zero());
 }
+
+TEST(BasicInst, test_0xaa_tax_move_a_to_x) {
+    Processor cpu;
+	cpu.status().acc = 10;
+    u8 insts[] = {0xaa, 0x00};
+	cpu.run(insts, 2);
+	ASSERT_EQ(cpu.status().x, 10);
+}
